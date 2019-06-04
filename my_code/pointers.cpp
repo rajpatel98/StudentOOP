@@ -23,7 +23,12 @@ void inc_with_reference(int& n)
 
 Thing** create_array_of_things(int n)
 {
-    return  new Thing*[n];
+    Thing** things = new Thing*[n];
+    for(int i = 0; i < n; i++)
+    {
+        things[i]= new Thing(i);
+    }
+    return  things;
 }
 
 void print_all_things(Thing** things, int n)
