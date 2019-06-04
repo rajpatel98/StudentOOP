@@ -23,31 +23,46 @@ void inc_with_reference(int& n)
 
 Thing** create_array_of_things(int n)
 {
-    
+    return  new Thing*[n];
+}
+
+void print_all_things(Thing** things, int n)
+{
     for(int i = 0; i < n; i++)
     {
-        
+        cout << things[i]->val << " ";
     }
-    return nullptr;
+    cout << endl;
 }
 
-void print_all_things(Thing** things, int n) {
+void double_all_things(Thing** things, int n)
+{
+    for(int i = 0; i < n; i++)
+    {
+        things[i]->val*=2;
+    }
 }
 
-void double_all_things(Thing** things, int n) {
+void delete_all_things(Thing** things, int n)
+{
+    for(int i = 0; i < n; i++)
+    {
+        delete things[i];
+    }
 }
 
-void delete_all_things(Thing** things, int n) {
-}
 
-
-void assignTA(Student* s, Student* ta) {
+void assignTA(Student* s, Student* ta)
+{
     s->ta = ta;
 }
 
-void printTAs(vector<Student*>& students) {
-    for (Student* student : students) {
-        if (student->ta == nullptr) {
+void printTAs(vector<Student*>& students)
+{
+    for (Student* student : students)
+    {
+        if (student->ta == nullptr)
+        {
             cout << student->name << " has no TA\n";
         }
         else {
