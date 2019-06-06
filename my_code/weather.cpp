@@ -25,7 +25,6 @@ string Weather::get_name() const
 int Weather::get_rating() const
 {
     return rating;
-
 }
 
 void Weather::set_rating(int new_rating)
