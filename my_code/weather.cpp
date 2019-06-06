@@ -7,7 +7,7 @@ using namespace std;
 
 ostream& operator<<(ostream& os, const GPS& gps)
 {
-    
+    os << "Latitude: " << gps.latitude << ", Longitude: " << gps.longitude;
     return os;
 }
 
@@ -32,3 +32,9 @@ void Weather::set_rating(int new_rating)
     rating = new_rating;
 }
 
+ostream& operator<<(ostream& os, const Weather& w)
+{
+    os << "Name: " << w.station_nm << ", Rating: " << w.rating;
+    os << ", Loc: " << w.my_loc << endl;
+    return os;
+}
