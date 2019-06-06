@@ -32,4 +32,4 @@ tests: test_hello test_basics test_pointers
 
 prod: tests
 	- git commit -a -m "new assignment done"
-git push origin master
+	git push origin master
