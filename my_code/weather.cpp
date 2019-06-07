@@ -24,8 +24,8 @@ ostream& operator<<(std::ostream& os, const Date& date)
 
 ostream& operator<<(std::ostream& os, const WReading& wr)
 {
-    os << "date: " << wr.date << " temperature: " << wr.temperature;
-    os << " humidity: " << wr.humidity << " humidity: " << wr.windspeed << " ";
+    os << "Date: " << wr.date << " Temperature: " << wr.temperature;
+    os << " Humidity: " << wr.humidity << " Humidity: " << wr.windspeed << " ";
     return os;
 }
 
@@ -58,11 +58,10 @@ void Weather::add_reading(WReading wr)
 ostream& operator<<(ostream& os, const Weather& w)
 {
     os << "Name: " << w.station_nm << ", Rating: " << w.rating;
-    os << ", Loc: " << w.my_loc;
+    os << ", Loc: " << w.my_loc << "\nReadings: \n";
     for (int i = 0; i < w.wreadings.size(); i++)
     {
-        os << w.wreadings[i];
+        os << w.wreadings[i] << endl;
     }
-    os << endl;
     return os;
 }
