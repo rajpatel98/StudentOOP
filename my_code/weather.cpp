@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <vector>
 #include "weather.h"
 
 using namespace std;
@@ -8,6 +9,23 @@ using namespace std;
 ostream& operator<<(ostream& os, const GPS& gps)
 {
     os << "Latitude: " << gps.latitude << ", Longitude: " << gps.longitude;
+    return os;
+}
+
+Date::Date(int d, int m, int y): day(d), month(m), year(y){}
+
+ostream& operator<<(std::ostream& os, const Date& date)
+{
+    os << date.day << "/" << date.month << "/" << date.year << " ";
+    return os;
+}
+
+
+
+ostream& operator<<(std::ostream& os, const WReading& wr)
+{
+    os << "date: " << wr.date << " temperature: " << wr.temperature;
+    os << " humidity: " << wr.humidity << " humidity: " << wr.windspeed << " ";
     return os;
 }
 
@@ -32,9 +50,19 @@ void Weather::set_rating(int new_rating)
     rating = new_rating;
 }
 
+void Weather::add_reading(WReading wr)
+{
+    wreadings.push_back(wr);
+}
+
 ostream& operator<<(ostream& os, const Weather& w)
 {
     os << "Name: " << w.station_nm << ", Rating: " << w.rating;
-    os << ", Loc: " << w.my_loc << endl;
+    os << ", Loc: " << w.my_loc;
+    for (int i = 0; i < w.wreadings.size(); i++)
+    {
+        os << w.wreadings[i];
+    }
+    os << endl;
     return os;
 }

@@ -29,9 +29,7 @@ class WReading {
     friend std::ostream& operator<<(std::ostream& os, const WReading& wr);
 public:
     WReading(Date dt, double temp, double hum, double ws) :
-    date(dt), temperature(temp), humidity(hum), windspeed(ws)
-    {
-    }
+    date(dt), temperature(temp), humidity(hum), windspeed(ws){}
     
 private:
     Date date;
