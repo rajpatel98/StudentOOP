@@ -5,26 +5,16 @@
 
 using namespace std;
 
-bool operator== (const Complex& c1, const Complex& c2) {
-    return true;  // temp!
-}
+Complex::Complex(double real, double imag): real(real), imag(imag){}
+
+
 
 ostream& operator<< (ostream& os, const Complex& c)
 {
-    os << "Real: " << c.get_real() << " Imag: " << c.get_imag();
+    os << "Real: " << c.real << " Imag: " << c.imag;
     return os;
-    /*
-     * Outputting a `Complex` instance, while illustrating some of the
-     * capabilities of I/O streams: `setprecision` gives us a fixed
-     * number of decimal places, while `showpos` turns on the plus
-     * sign for positive numbers.
-     * */
 }
 
-
-/*
- * Read a `Complex` number from an input stream.
- * */
 istream& operator>> (istream& is, Complex& c)
 {
     double real, imag;
@@ -33,7 +23,6 @@ istream& operator>> (istream& is, Complex& c)
     c.imag = imag;
     return is;
 }
-
 
 Complex::operator bool() const
 {
@@ -50,13 +39,53 @@ Complex& Complex::operator++()
 Complex Complex::operator++(int dummy)
 {
     Complex temp = *this;
-    imag++;
+    real++;
     return temp;
 }
 
-Complex Complex::operator+(const Complex& c)
+Complex& Complex::operator--()
 {
-    return Complex(real + c.get_real(), imag + c.get_imag());
+    real--;
+    return *this;
+
+}
+
+Complex Complex::operator--(int dummy)
+{
+    Complex temp = *this;
+    real--;
+    return temp;
+}
+
+Complex Complex::operator-=(const Complex& c)
+{
+    real-=c.real;
+    imag-=c.imag;
+    return *this;
+}
+
+Complex operator+(const Complex& c1, const Complex& c2)
+{
+    return Complex(c1.get_real() + c2.get_real(), c1.get_imag() + c2.get_imag());
+}
+
+Complex operator-(const Complex& c1, const Complex& c2)
+{
+    return Complex(c1.get_real() - c2.get_real(), c1.get_imag() - c2.get_imag());
+}
+
+bool operator== (const Complex& c1, const Complex& c2)
+{
+    if (c1.get_real() == c2.get_real() && c1.get_imag() == c2.get_imag())
+    {
+        return true;
+    }
+    return false;
+}
+
+bool operator!= (const Complex& c1, const Complex& c2)
+{
+    return !(c1==c2);
 }
 
 double Complex::get_real() const

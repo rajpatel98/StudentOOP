@@ -4,7 +4,7 @@
 
 using namespace std;
 
-const bool DEBUG = true;
+const bool DEBUGER = true;
 
 
 int main() {
@@ -17,7 +17,7 @@ int main() {
         cerr << "Bad input format\n";
         exit(1);
     }
-        if(DEBUG)
+        if(DEBUGER)
         {
             cout << "c1 = " << c1 << endl;
         }
@@ -26,7 +26,7 @@ int main() {
         assert(c2.get_real() == 43.2);
         assert(c2.get_imag() == 58.9);
     
-        if(DEBUG)
+        if(DEBUGER)
         {
             cout << "c2 = " << c2 << endl;
         }
@@ -35,7 +35,7 @@ int main() {
         Complex c3 = c1 + c2;
         assert(c3.get_real() > 43.2);
         // see if `Complex` subtraction works:
-        Complex c3 -= c2;
+        c3 -= c2;
         assert(c3 == c1);
     
         Complex c4 = Complex();
