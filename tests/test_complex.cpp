@@ -32,9 +32,11 @@ int main() {
     }
 
     // see if `Complex` addition works:
-    // Complex c3 = c1 + c2;
+    Complex c3 = c1 + c2;
+    assert(c3.get_real() > 43.2);
     // see if `Complex` subtraction works:
 
+    
     Complex c4 = Complex();
     // test pre-increment:
     c4++;
