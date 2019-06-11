@@ -11,6 +11,8 @@ bool operator== (const Complex& c1, const Complex& c2) {
 
 ostream& operator<< (ostream& os, const Complex& c)
 {
+    os << "Real: " << c.get_real() << " Imag: " << c.get_imag();
+    return os;
     /*
      * Outputting a `Complex` instance, while illustrating some of the
      * capabilities of I/O streams: `setprecision` gives us a fixed
@@ -25,27 +27,31 @@ ostream& operator<< (ostream& os, const Complex& c)
  * */
 istream& operator>> (istream& is, Complex& c)
 {
-    
+    double real, imag;
+    is >> real >> imag;
+    c.real = real;
+    c.imag = imag;
+    return is;
 }
 
 
 Complex::operator bool() const
 {
-    
+    if (real == 0 && imag == 0) return false;
+    return true;
 }
 
 Complex& Complex::operator++()
 {
     real++;
-    imag++;
     return *this;
 }
 
 Complex Complex::operator++(int dummy)
 {
-    real+=dummy;
+    Complex temp = *this;
     imag++;
-    return *this;
+    return temp;
 }
 
 Complex Complex::operator+(const Complex& c)
@@ -65,6 +71,7 @@ double Complex::get_imag() const
 
 Complex Complex::operator*(const int i)
 {
+    return Complex(real*i, imag*i);
 
 }
 
