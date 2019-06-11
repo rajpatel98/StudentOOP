@@ -32,20 +32,20 @@ Complex::operator bool() const
 
 Complex& Complex::operator++()
 {
-    real++;
+    ++real;
     return *this;
 }
 
 Complex Complex::operator++(int dummy)
 {
     Complex temp = *this;
-    real++;
+    ++real;
     return temp;
 }
 
 Complex& Complex::operator--()
 {
-    real--;
+    --real;
     return *this;
 
 }
@@ -53,7 +53,7 @@ Complex& Complex::operator--()
 Complex Complex::operator--(int dummy)
 {
     Complex temp = *this;
-    real--;
+    --real;
     return temp;
 }
 
