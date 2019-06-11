@@ -7,20 +7,21 @@ using namespace std;
 const bool DEBUGER = true;
 
 
-int main() {
+int main()
+{
     cout << "Input a complex number:\n";
-    Complex c1;
+    Complex c1{2, 5};
     // get a complex from stdin:
-    cin >> c1;
-    if(!cin)
-    {
-        cerr << "Bad input format\n";
-        exit(1);
-    }
-        if(DEBUGER)
-        {
-            cout << "c1 = " << c1 << endl;
-        }
+//    cin >> c1;
+//    if(!cin)
+//    {
+//        cerr << "Bad input format\n";
+//        exit(1);
+//    }
+//        if(DEBUGER)
+//        {
+//            cout << "c1 = " << c1 << endl;
+//        }
     
         Complex c2{43.2, 58.9};
         assert(c2.get_real() == 43.2);
