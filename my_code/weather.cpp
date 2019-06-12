@@ -21,7 +21,7 @@ Image::~Image()
 {
     if (image_buf)
     {
-        delete image_buf;
+        delete[] image_buf;
         image_buf = nullptr;
     }
 }
@@ -30,7 +30,7 @@ Image& Image::operator=(const Image& img2)
 {
     if (image_buf)
     {
-        delete image_buf;
+        delete[] image_buf;
         image_buf = nullptr;
     }
     copy_fields(img2);
@@ -48,9 +48,10 @@ void Image::copy_fields(const Image& img2)
     width = img2.width;
     height = img2.height;
     filename = img2.filename;
+    image_buf = new char[image_sz()];
     for (int i = 0; i < 100; i++)
     {
-        image_buf[i] = new char(img2.image_buf[i]);
+        image_buf[i] = img2.image_buf[i];
     }
     
 }
