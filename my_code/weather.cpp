@@ -5,29 +5,54 @@
 
 using namespace std;
 
-Image::Image(int w, int h, std::string flnm)
-: width(w), height(h)
+Image::Image(int w, int h, std::string flnm): width(w), height(h)
 {
     filename = flnm;
     image_buf = new char[image_sz()];
 }
 
 // copy constructor:
-Image::Image(const Image& img2) {
+Image::Image(const Image& img2)
+{
+    copy_fields(img2);
 }
 
-Image::~Image() {
+Image::~Image()
+{
+    if (image_buf)
+    {
+        delete image_buf;
+        image_buf = nullptr;
+    }
 }
 
-Image& Image::operator=(const Image& img2) {
+Image& Image::operator=(const Image& img2)
+{
+    if (image_buf)
+    {
+        delete image_buf;
+        image_buf = nullptr;
+    }
+    copy_fields(img2);
+    return *this;
 }
 
-int Image::image_sz() {
+int Image::image_sz()
+{
     return width * height;
 }
 
 
-void Image::copy_fields(const Image& img2) {
+void Image::copy_fields(const Image& img2)
+{
+    width = img2.width;
+    height = img2.height;
+    filename = img2.filename;
+    for (int i = 0; i < 100; i++)
+    {
+        image_buf[i] = new char(img2.image_buf[i]);
+    }
+    
 }
 
 
@@ -35,7 +60,8 @@ void Image::copy_fields(const Image& img2) {
  * Setting `display() = 0` here makes this an abstract
  * class that can't be implemented.
  * */
-string Image::display(std::string s) {
+string Image::display(std::string s)
+{
     return "Displaying image " + s;
 }
 
@@ -47,14 +73,6 @@ ostream& operator<<(ostream& os, const GPS& gps)
     os << "Latitude: " << gps.latitude << ", Longitude: " << gps.longitude;
     return os;
 }
-
-//Date::Date(int d, int m, int y): day(d), month(m), year(y){}
-//
-//ostream& operator<<(std::ostream& os, const Date& date)
-//{
-//    os << date.day << "/" << date.month << "/" << date.year << " ";
-//    return os;
-//}
 
 
 
