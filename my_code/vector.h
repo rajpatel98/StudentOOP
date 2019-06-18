@@ -1,7 +1,8 @@
 
 const int DEF_CAPACITY = 10;
 
-class MyVec {
+class MyVec
+{
     public:
         MyVec();
 
