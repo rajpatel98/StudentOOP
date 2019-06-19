@@ -15,7 +15,11 @@ public:
     Image(const Image& img2);
     ~Image();
     Image& operator=(const Image& img2);
+    
+    virtual void display_images();
+    
     int image_sz();
+    
     
     /*
      * Setting `display() = 0` here makes this an abstract
@@ -39,6 +43,41 @@ private:
     void copy_fields(const Image& img2);
 };
 
+class Jpeg : public Image
+{
+public:
+    
+    
+    void display_images();
+
+private:
+    
+};
+
+class Gif : public Image
+{
+public:
+    
+    
+    void display_images();
+
+private:
+    
+};
+
+class Png : public Image
+{
+public:
+    Png(int w, int h, std::string flnm) : Image(w, h, flnm) {}
+
+    
+    void display_images();
+
+private:
+    
+};
+
+
 struct GPS {
     double latitude;
     double longitude;
@@ -47,17 +86,6 @@ struct GPS {
 };
 
 std::ostream& operator<<(std::ostream& os, const GPS& gps);
-
-
-//class Date {
-//    friend std::ostream& operator<<(std::ostream& os, const Date& date);
-//public:
-//    Date(int d, int m, int y);
-//private:
-//    int day;
-//    int month;
-//    int year;
-//};
 
 
 class WReading {

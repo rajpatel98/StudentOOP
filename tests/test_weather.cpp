@@ -66,4 +66,5 @@ int main() {
     get_wreadings(filenm, irkutsk);
 
     cout << irkutsk << endl;
+    irkutsk.display_images();
 }
