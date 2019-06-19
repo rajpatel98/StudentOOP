@@ -66,7 +66,7 @@ public:
     WReading(Date dt, double temp, double hum, double ws) :
     date(dt), temperature(temp), humidity(hum), windspeed(ws){}
     
-    double get_tempF()  { return ((temperature*(9/5)) + 32); }
+    double get_tempF()  { return (((temperature*9)/5) + 32); }
     
     double get_tempC()  { return temperature; }
     

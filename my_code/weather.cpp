@@ -112,7 +112,7 @@ void Weather::add_reading(WReading wr)
 
 ostream& operator<<(ostream& os, const Weather& w)
 {
-    os << "Name: " << w.station_nm << ", Rating: " << w.rating;
+    os << "Name: " << w.get_name() << ", Rating: " << w.rating;
     os << ", Loc: " << w.my_loc << "\nReadings: \n";
     for (int i = 0; i < w.wreadings.size(); i++)
     {
