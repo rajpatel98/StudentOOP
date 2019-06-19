@@ -46,18 +46,19 @@ private:
 class Jpeg : public Image
 {
 public:
-    
+    Jpeg(int w, int h, std::string flnm) : Image(w, h, flnm) {}
+
     
     void display_images();
 
 private:
-    
 };
 
 class Gif : public Image
 {
 public:
-    
+    Gif(int w, int h, std::string flnm) : Image(w, h, flnm) {}
+
     
     void display_images();
 
@@ -91,19 +92,22 @@ std::ostream& operator<<(std::ostream& os, const GPS& gps);
 class WReading {
     friend std::ostream& operator<<(std::ostream& os, const WReading& wr);
 public:
-    WReading(Date dt, double temp, double hum, double ws) :
-    date(dt), temperature(temp), humidity(hum), windspeed(ws){}
+    
+    WReading(Date dt, double temp, double hum, double ws, Image* img) :
+    date(dt), temperature(temp), humidity(hum), windspeed(ws), image(img) {}
     
     double get_tempF()  { return (((temperature*9)/5) + 32); }
     
     double get_tempC()  { return temperature; }
     
+    void display_image() { image->display_images();}
     
 private:
     Date date;
     double temperature;  // stored temp in C
     double humidity;
     double windspeed;
+    Image* image;
 };
 
 
@@ -121,6 +125,7 @@ public:
     int get_rating() const;
     void set_rating(int new_rating);
     void add_reading(WReading wr);
+    void display_images();
 private:
     std::vector<WReading> wreadings;
     std::string station_nm;

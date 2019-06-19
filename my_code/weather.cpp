@@ -66,6 +66,28 @@ string Image::display(std::string s)
     return "Displaying image " + s;
 }
 
+void Image::display_images()
+{
+    cout << " base \n";
+}
+
+void Gif::display_images()
+{
+    cout << " gif \n";
+
+}
+
+void Jpeg::display_images()
+{
+    cout << " jpeg \n";
+
+}
+
+void Png::display_images()
+{
+    cout << " png \n";
+
+}
 
 
 
@@ -108,6 +130,15 @@ void Weather::set_rating(int new_rating)
 void Weather::add_reading(WReading wr)
 {
     wreadings.push_back(wr);
+}
+
+void Weather::display_images()
+{
+    for (WReading wr : wreadings)
+    {
+        wr.display_image();
+    }
+
 }
 
 ostream& operator<<(ostream& os, const Weather& w)
