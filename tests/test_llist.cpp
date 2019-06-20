@@ -23,6 +23,7 @@ int main() {
     assert(head->data == 4);
 
     print_list(cout, head);
+    cout << endl;
 
     /*
     cout << "List: \n";
