@@ -36,8 +36,8 @@ void add_at_end(Node*& head, int d) {
  * */
 void print_list(ostream& os, const Node* curr)
 {
-    cout << curr;
-    if (curr) print_list((os << " -> "), curr->next);
+    cout << curr << " -> ";
+    if (curr) print_list(os, curr->next);
 }
 
 /*
