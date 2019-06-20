@@ -9,8 +9,8 @@ using namespace std;
  * Output a Node pointer.
  * */
 ostream& operator<<(ostream& os, const Node* nd) {
-    if (!nd) return os << "null \n";
-    os << "Data: " << nd->data << " -> ";
+    if (!nd) return os << "null";
+    os << "Data: " << nd->data;
     return os;
 }
 
@@ -37,7 +37,7 @@ void add_at_end(Node*& head, int d) {
 void print_list(ostream& os, const Node* curr)
 {
     cout << curr;
-    if (curr) print_list(os, curr->next);
+    if (curr) print_list((os << " -> "), curr->next);
 }
 
 /*
@@ -54,13 +54,20 @@ void add_at_front(Node*& head, int d)
  * */
 Node* last(Node* head)
 {
-    if (!head->next)
+    if (!head)
     {
-        return head;
+        return nullptr;
     }
     else
     {
-        return last(head->next);
+        if (!head->next)
+        {
+            return head;
+        }
+        else
+        {
+            return last(head->next);
+        }
     }
-    return nullptr;
+
 }
