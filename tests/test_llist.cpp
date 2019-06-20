@@ -11,7 +11,7 @@ int main() {
     add_at_end(head, 64);
     add_at_end(head, 128);
     add_at_end(head, 256);
-    print_list(cout, head);
+//    print_list(cout, head);
 
     assert(head->data == 8);
 

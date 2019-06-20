@@ -9,7 +9,7 @@ using namespace std;
  * Output a Node pointer.
  * */
 ostream& operator<<(ostream& os, const Node* nd) {
-    if (!nd) return os << "null";
+    if (!nd) return os << "null \n";
     os << "Data: " << nd->data << " -> ";
     return os;
 }
@@ -54,7 +54,13 @@ void add_at_front(Node*& head, int d)
  * */
 Node* last(Node* head)
 {
-    if (!head->next) return head;
-    if (head->next) last(head->next);
-    
+    if (!head->next)
+    {
+        return head;
+    }
+    else
+    {
+        return last(head->next);
+    }
+    return nullptr;
 }
