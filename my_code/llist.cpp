@@ -4,10 +4,6 @@
 using namespace std;
 
 
-
-/*
- * Output a Node pointer.
- * */
 ostream& operator<<(ostream& os, const Node* nd) {
     if (!nd) return os << "null";
     os << "Data: " << nd->data;
@@ -15,9 +11,6 @@ ostream& operator<<(ostream& os, const Node* nd) {
 }
 
 
-/*
- * Add a node to the end of a list.
- * */
 void add_at_end(Node*& head, int d) {
     if (!head)
     {
@@ -30,23 +23,51 @@ void add_at_end(Node*& head, int d) {
 }
 
 
-/*
- * Given the head of a list, print the whole thing.
- * Let's do this recursively!
- * */
 void print_list(ostream& os, const Node* curr)
 {
     cout << curr << " -> ";
     if (curr) print_list(os, curr->next);
 }
 
-/*
- * Add a node at the front of a linked list.
- * */
+
+Node* last(Node* head)
+{
+    if (!head)
+    {
+        return nullptr;
+    }
+    else
+    {
+        if (!head->next)
+        {
+            return head;
+        }
+        else
+        {
+            return last(head->next);
+        }
+    }
+}
+
+
 void add_at_front(Node*& head, int d)
 {
     head = new Node(d, head);
 }
+
+
+bool del_head(Node*& head)
+{
+    if (head)
+    {
+        Node* temp = head;
+        head = head->next;
+        delete temp;
+        return true;
+    }
+    return false;
+}
+
 
 bool del_tail(Node*& curr)
 {
@@ -69,25 +90,45 @@ bool del_tail(Node*& curr)
     }
     return false;
 }
-/*
- * Get the last node of a list.
- * */
-Node* last(Node* head)
+
+
+Node* duplicate(Node* head)
 {
     if (!head)
+    {
+        return head;
+    }
+    else
+    {
+        return new Node(head->data, duplicate(head->next));
+    }
+}
+
+
+Node* reverse(Node* curr, Node* new_next)
+{
+    if (!curr)
     {
         return nullptr;
     }
     else
     {
-        if (!head->next)
-        {
-            return head;
-        }
-        else
-        {
-            return last(head->next);
-        }
+        return reverse(curr->next, new Node(curr->data, curr));
     }
-
 }
+
+
+Node* join(Node*& list1, Node* list2)
+{
+    if (list1)
+    {
+        last(list1)->next = list2;
+        return list1;
+    }
+    else
+    {
+        return list2;
+    }
+}
+
+
