@@ -6,6 +6,7 @@ using namespace std;
 int main() {
     Node* head = nullptr;
     head = new Node(8, nullptr);
+    
     add_at_end(head, 16);
     add_at_end(head, 32);
     add_at_end(head, 64);
@@ -22,6 +23,8 @@ int main() {
     add_at_front(head, 4);
     assert(head->data == 4);
 
+    del_tail(head);
+    
     print_list(cout, head);
     cout << endl;
 

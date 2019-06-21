@@ -48,7 +48,27 @@ void add_at_front(Node*& head, int d)
     head = new Node(d, head);
 }
 
-
+bool del_tail(Node*& curr)
+{
+    if (!curr)
+    {
+        return false;
+    }
+    else
+    {
+        if (!curr->next)
+        {
+            delete curr;
+            curr = nullptr;
+            return true;
+        }
+        else
+        {
+            del_tail(curr->next);
+        }
+    }
+    return false;
+}
 /*
  * Get the last node of a list.
  * */
