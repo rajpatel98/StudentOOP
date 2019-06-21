@@ -7,7 +7,8 @@
 /*
  * The struct `Node`, which is the building block of our linked list code.
  * */
-struct Node {
+struct Node
+{
     Node(int d, Node* n=nullptr) : data(d), next(n) {}
     int data;
     Node* next;

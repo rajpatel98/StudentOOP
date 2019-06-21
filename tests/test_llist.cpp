@@ -3,7 +3,8 @@
 
 using namespace std;
 
-int main() {
+int main()
+{
     Node* head = nullptr;
     head = new Node(8, nullptr);
     add_at_end(head, 16);
@@ -58,8 +59,7 @@ int main() {
 
     
 // now join the reversed list on to the end of the original list:
-//    head = join(head, reversed);
-    head = join(head, dupe);
+    head = join(head, reversed);
     cout << "Joined lists: \n";
     print_list(cout, head);
     lastp = last(head);

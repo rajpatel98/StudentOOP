@@ -109,11 +109,11 @@ Node* reverse(Node* curr, Node* new_next)
 {
     if (!curr)
     {
-        return nullptr;
+        return new_next;
     }
     else
     {
-        return reverse(curr->next, new Node(curr->data, curr));
+        return reverse(curr->next, new Node(curr->data, new_next));
     }
 }
 
