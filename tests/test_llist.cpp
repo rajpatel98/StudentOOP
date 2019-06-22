@@ -15,7 +15,6 @@ int main()
     cout << "head->data: " << head->data << endl;
     assert(head->data == 8);
     
-    
     // let's see if our last() function works:
     Node* lastp = last(head);
     cout << "Last: " << lastp << endl;

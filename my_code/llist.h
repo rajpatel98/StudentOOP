@@ -14,20 +14,19 @@ struct Node
     Node* next;
 };
 
-
 /*
  * The various functions that can operate on our linked lists:
  * */
 std::ostream& operator<<(std::ostream& os, const Node* nd);
+
 void print_list(std::ostream& os, const Node* curr);
+
 Node* last(Node* head);
+
 void add_at_end(Node*& head, int d);
+
 void add_at_front(Node*& head, int d);
 
-/*
- * These are coming:
-*/
- 
 /*
  * Delete the first node and attach head to the 2nd node:
  * */

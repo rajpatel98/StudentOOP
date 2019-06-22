@@ -10,7 +10,6 @@ ostream& operator<<(ostream& os, const Node* nd) {
     return os;
 }
 
-
 void add_at_end(Node*& head, int d) {
     if (!head)
     {
@@ -22,13 +21,11 @@ void add_at_end(Node*& head, int d) {
     }
 }
 
-
 void print_list(ostream& os, const Node* curr)
 {
     cout << curr << " -> ";
     if (curr) print_list(os, curr->next);
 }
-
 
 Node* last(Node* head)
 {
@@ -49,12 +46,10 @@ Node* last(Node* head)
     }
 }
 
-
 void add_at_front(Node*& head, int d)
 {
     head = new Node(d, head);
 }
-
 
 bool del_head(Node*& head)
 {
@@ -67,7 +62,6 @@ bool del_head(Node*& head)
     }
     return false;
 }
-
 
 bool del_tail(Node*& curr)
 {
@@ -91,7 +85,6 @@ bool del_tail(Node*& curr)
     return false;
 }
 
-
 Node* duplicate(Node* head)
 {
     if (!head)
@@ -103,7 +96,6 @@ Node* duplicate(Node* head)
         return new Node(head->data, duplicate(head->next));
     }
 }
-
 
 Node* reverse(Node* curr, Node* new_next)
 {
@@ -117,7 +109,6 @@ Node* reverse(Node* curr, Node* new_next)
     }
 }
 
-
 Node* join(Node*& list1, Node* list2)
 {
     if (list1)
@@ -130,5 +121,3 @@ Node* join(Node*& list1, Node* list2)
         return list2;
     }
 }
-
-
