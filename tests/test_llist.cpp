@@ -49,19 +49,19 @@ int main()
     assert(lastp->data == 8);
     
     
-     // now duplicate it:
-     Node* dupe = duplicate(head);
-     cout << "Duplicate: \n";
-     print_list(cout, dupe);
-     assert(dupe->data == 8);
-     lastp = last(dupe);
-     assert(lastp->data == 128);
-     
-     // now join the reversed list on to the end of the original list:
-     head = join(head, reversed);
-     cout << "Joined lists: \n";
-     print_list(cout, head);
-     lastp = last(head);
-     assert(lastp->data == 8);
+    // now duplicate it:
+    Node* dupe = duplicate(head);
+    cout << "Duplicate: \n";
+    print_list(cout, dupe);
+    assert(dupe->data == 8);
+    lastp = last(dupe);
+    assert(lastp->data == 128);
+    
+    // now join the reversed list on to the end of the original list:
+    head = join(head, reversed);
+    cout << "Joined lists: \n";
+    print_list(cout, head);
+    lastp = last(head);
+    assert(lastp->data == 8);
     
 }
