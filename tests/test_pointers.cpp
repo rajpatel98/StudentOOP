@@ -46,7 +46,5 @@ int main() {
     
     delete_all_things(things, NUM_THINGS);
     
-    print_all_things(things, NUM_THINGS);
-
     return 0;
 }
