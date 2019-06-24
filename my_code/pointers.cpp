@@ -54,6 +54,8 @@ void delete_all_things(Thing** things, int n)
     {
         delete things[i];
     }
+    //correction
+    delete[] things;
 }
 
 
