@@ -4,29 +4,24 @@
 
 using namespace std;
 
-int copy_vector(MyVec v)
-{
+int copy_vector(MyVec v) {
     MyVec local_v = v;
     return local_v.size();
 }
 
-int main()
-{
+int main() {
     MyVec v = MyVec();
-    for (int i = 0; i < 200; i++)
-    {
+    for (int i = 0; i < 200; i++) {
         v.push_back(i);
         copy_vector(v);
     }
     assert(v[199] == 199);
-    for (int i = 0; i < 200; i++)
-    {
+    for (int i = 0; i < 200; i++) {
         v[i] *= 2;
     }
     assert(v[199] == 398);
     MyVec v3;
-    for (int i = 9; i < 100; i += 9)
-    {
+    for (int i = 9; i < 100; i += 9) {
         v3.push_back(i);
     }
     assert(v3[1] == 18);
@@ -38,4 +33,13 @@ int main()
     v2 = v3;
     print_vector(v2);
     assert(v2 == v3);
+
+    for (int i : v3) {
+        assert((i % 9) == 0);
+    }
+
+    MyVec v4 = MyVec(10, 20);
+    for (int i : v4) {
+        assert(i == 20);
+    }
 }
