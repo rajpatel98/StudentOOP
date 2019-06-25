@@ -13,18 +13,23 @@ class MyVec {
          * operator*
          * operator!=
          * */
-            friend bool operator!=(Iterator& rhs, Iterator& lhs) {
-                return true;
+            friend bool operator!=(Iterator& rhs, Iterator& lhs)
+            {
+                return (rhs.iptr != lhs.iptr);
             }
 
         public:
             Iterator(int* ip) : iptr(ip) {}
 
-            Iterator& operator++() {
+        
+            
+            Iterator& operator++()
+            {
+                iptr++;
                 return *this;
             }
 
-            int operator*() { return 0; }
+            int operator*() { return *iptr; }
 
         private:
             int* iptr;
