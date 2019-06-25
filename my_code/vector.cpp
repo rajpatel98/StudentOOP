@@ -15,7 +15,13 @@ MyVec::MyVec() : sz(0) {
 }
 
 
-MyVec::MyVec(int sz, int val) : sz{sz} {
+MyVec::MyVec(int sz, int val) : sz{sz}
+{
+    data = new int[sz];
+    for (int i = 0; i < sz; i++)
+    {
+        data[i] = val;
+    }
 }
 
 
@@ -36,12 +42,15 @@ MyVec& MyVec::operator=(const MyVec& v2) {
 }
 
 
-MyVec::Iterator MyVec::begin() const {
-    return MyVec::Iterator(nullptr);
+MyVec::Iterator MyVec::begin() const
+{
+    return MyVec::Iterator(data);
 }
 
-MyVec::Iterator MyVec::end() const {
-    return MyVec::Iterator(nullptr);
+MyVec::Iterator MyVec::end() const
+{
+    
+    return MyVec::Iterator(data + size());
 }
 
 
@@ -49,7 +58,8 @@ MyVec::Iterator MyVec::end() const {
  * == is true when every element of the vectors are the same in
  * the same order. (Thus they must be the same size.)
  * */
-bool operator==(MyVec& v1, MyVec& v2) {
+bool operator==(MyVec& v1, MyVec& v2)
+{
     return true;
 }
 
