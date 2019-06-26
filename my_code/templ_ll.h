@@ -6,6 +6,14 @@
 #include <vector>
 
 
+std::ostream& operator<<(std::ostream& os, const std::vector<int> v) {
+    for (int i : v) {
+        os << i << ", ";
+    }
+    os << std::endl;
+    return os;
+}
+
 /*
  * The class template `Node`, which is the building block of our linked list code.
  * */
@@ -16,6 +24,7 @@ public:
     DATA data;
     Node* next;
 };
+
 
 
 /*

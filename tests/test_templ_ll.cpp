@@ -6,13 +6,7 @@
 
 using namespace std;
 
-ostream& operator<<(ostream& os, const vector<int> v) {
-    for (int i : v) {
-        os << i << ", ";
-    }
-    os << endl;
-    return os;
-}
+
 
 int main() {
     Node<int>* ihead = nullptr;
