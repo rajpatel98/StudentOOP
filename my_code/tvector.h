@@ -27,7 +27,7 @@ public:
         }
         
     public:
-        Iterator(int* ip) : iptr(ip) {}
+        Iterator(DATA* ip) : iptr(ip) {}
         
         
         
@@ -37,21 +37,21 @@ public:
             return *this;
         }
         
-        int operator*() { return *iptr; }
+        DATA operator*() { return *iptr; }
         
     private:
-        int* iptr;
+        DATA* iptr;
     };
     
     MyVec() : sz(0) {
         capacity = DEF_CAPACITY;
-        data = new int[DEF_CAPACITY];
+        data = new DATA[DEF_CAPACITY];
     }
     
     
-    MyVec(int sz, int val = 0) : sz{sz}
+    MyVec(int sz, DATA val = 0) : sz{sz}
     {
-        data = new int[sz];
+        data = new DATA[sz];
         for (int i = 0; i < sz; i++)
         {
             data[i] = val;
@@ -75,12 +75,12 @@ public:
         return *this;
     }
     
-    void push_back(int val) {
+    void push_back(DATA val) {
         sz++;
         if (sz > capacity) {
-            cout << "Increasing capacity\n";
-            int* old_data = data;
-            data = new int[capacity * CAPACITY_MULT];
+//            cout << "Increasing capacity\n";
+            DATA* old_data = data;
+            data = new DATA[capacity * CAPACITY_MULT];
             for (int i = 0; i < sz; i++) {
                 data[i] = old_data[i];
             }
@@ -94,7 +94,7 @@ public:
      * this [] is for reading items from the MyVec:
      * It returns the i-th element.
      * */
-    int operator[](int i) const {
+    DATA operator[](int i) const {
         return data[i];
     }
     
@@ -102,7 +102,7 @@ public:
      * this [] allows write access to items in the MyVec:
      * It returns a reference to the i-th element.
      * */
-    int& operator[](int i) {
+    DATA& operator[](int i) {
         return data[i];
     }
     
@@ -110,37 +110,39 @@ public:
     
     int size() const { return sz; }
     
-    MyVec::Iterator MyVec::begin() const
+    Iterator begin() const
     {
-        return MyVec::Iterator(data);
+        return Iterator(data);
     }
     
-    MyVec::Iterator MyVec::end() const
+    Iterator end() const
     {
         
-        return MyVec::Iterator(data + size());
+        return Iterator(data + size());
     }
     
 private:
     void copy(const MyVec& v2) {
         sz = v2.sz;
         capacity = v2.capacity;
-        data = new int[capacity];
+        data = new DATA[capacity];
         for (int i = 0; i < sz; i++) {
             data[i] = v2.data[i];
         }
-    }    int* data;
+    }
+    DATA* data;
     int sz;
     int capacity;
 };
 
-
-void print_vector(const MyVec& v) {
-    for (int i : v) cout << i << " ";
-    cout << endl;
+template <typename DATA>
+void print_vector(const MyVec<DATA>& v) {
+    for (DATA i : v) std::cout << i << " ";
+    std::cout << std::endl;
 }
 
-bool operator==(MyVec& v1, MyVec& v2)
+template <typename DATA>
+bool operator==(MyVec<DATA>& v1, MyVec<DATA>& v2)
 {
     return true;
 }

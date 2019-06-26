@@ -1,12 +1,13 @@
 #include <cassert>
 #include <iostream>
-#include "../my_code/vector.h"
+#include "../my_code/tvector.h"
 
 using namespace std;
 
-template <typename T>
-int copy_vector(MyVec<T> v) {
-    MyVec<T> local_v = v;
+template <typename DATA>
+int copy_vector(MyVec<DATA> v)
+{
+    MyVec<DATA> local_v = v;
     return local_v.size();
 }
 
