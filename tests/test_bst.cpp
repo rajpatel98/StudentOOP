@@ -12,7 +12,9 @@
 
 using namespace std;
 
-int main() {
+int main()
+{
+//    /*
     Bst<int>* iroot = new Bst<int>(40);
     assert(iroot->get_val() == 40);
     print_bst(*iroot);
@@ -21,52 +23,54 @@ int main() {
     iroot->insert(20);
     iroot->insert(60);
     print_bst(*iroot);
-    // assert(min(iroot) == 20);
-    // assert(max(iroot) == 60);
+    assert(iroot->min() == 20);
+    assert(iroot->max() == 60);
 
     iroot->insert(10);
     iroot->insert(30);
     iroot->insert(50);
     iroot->insert(70);
     print_bst(*iroot);
-    // assert(min(iroot) == 10);
-    // assert(max(iroot) == 70);
+    assert(iroot->min() == 10);
+    assert(iroot->max() == 70);
 
     iroot->insert(5);
     iroot->insert(25);
     iroot->insert(45);
     iroot->insert(75);
     print_bst(*iroot);
-    // assert(min(iroot) == 5);
-    // assert(max(iroot) == 75);
+    assert(iroot->min() == 5);
+    assert(iroot->max() == 75);
 
+    
     Bst<int>* result = iroot->search(45);
     assert(result->get_val() == 45);
     result = iroot->search(95);
     assert(result == nullptr);
 
-    pred45 = iroot->predecessor(45);
+    Bst<int>* pred45 = iroot->predecessor(45);
     assert(pred45->get_val() == 40);
-    succ45 = iroot->successor(45);
+    Bst<int>* succ45 = iroot->successor(45);
     assert(succ45->get_val() == 50);
-    
+ // */
 
-    Bst<string>* sroot = new Bst<string>("Daniel");
+ // /*
+    Bst<string>* sroot = new Bst<string>("Ellie");
     assert(sroot->get_val() == "Ellie");
     print_bst(*sroot);
 
-    /*
+    
     sroot->insert("Daniel");
     sroot->insert("Raj");
     print_bst(*sroot);
-    // assert(min(sroot) == "Daniel");
-    // assert(max(sroot) == "Raj");
+    assert(sroot->min() == "Daniel");
+    assert(sroot->max() == "Raj");
     sroot->insert("Bohan");
     sroot->insert("Raymond");
     print_bst(*sroot);
-    // assert(min(sroot) == "Bohan");
-    // assert(max(sroot) == "Raymond");
+    assert(sroot->min() == "Bohan");
+    assert(sroot->max() == "Raymond");
     Bst<string>* sresult = sroot->search("Raj");
     assert(sresult->get_val() == "Raj");
-    */
+//    */
 }

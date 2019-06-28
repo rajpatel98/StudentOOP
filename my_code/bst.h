@@ -6,7 +6,8 @@ void indent(int level) {
 }
 
 template <typename T>
-class Bst {
+class Bst
+{
     friend void print_bst(const Bst<T>& bst, int level=0)
     {
         indent(level);
@@ -33,53 +34,151 @@ class Bst {
         std::cout << std::endl;
     }
 
-    public:
-        Bst(T d, Bst* p=nullptr, Bst* l=nullptr, Bst* r=nullptr)
-            : data(d), parent(p), left(l), right(r) {}
+public:
+    Bst(T d, Bst* p=nullptr, Bst* l=nullptr, Bst* r=nullptr)
+        : data(d), parent(p), left(l), right(r) {}
 
-        Bst<T>* insert(const T d)
+    Bst<T>* insert(const T d)
+    {
+        if (d == data) return nullptr;
+        else if (d < data)
         {
-            if (d == data) return nullptr;
-            else if (d < data)
+            if (!left)
             {
-                if (!left)
-                {
-                    left = new Bst(d, this, nullptr, nullptr);
-                    return left;
-                }
-                else
-                {
-                    left->insert(d);
-                }
+                left = new Bst(d, this, nullptr, nullptr);
+                return left;
             }
             else
             {
-                if (!right)
-                {
-                    right = new Bst(d, this, nullptr, nullptr);
-                    return right;
-                }
-                else
-                {
-                    right->insert(d);
-                }
+                return left->insert(d);
             }
         }
-
-        T get_val() const
+        else
+        {
+            if (!right)
+            {
+                right = new Bst(d, this, nullptr, nullptr);
+                return right;
+            }
+            else
+            {
+                return right->insert(d);
+            }
+        }
+    }
+    
+    T min()
+    {
+        if (!left)
         {
             return data;
         }
+        else
+        {
+            return left->min();
+        }
+        
+    }
 
-    private:
-        T data;
-        Bst* parent;
-        Bst* left;
-        Bst* right;
+    T max()
+    {
+        if (!right)
+        {
+            return data;
+        }
+        else
+        {
+            return right->max();
+        }
+    }
+    
+    Bst<T>* search(const T d)
+    {
+        if (d == data) return this;
+        else if (d < data)
+        {
+            if (left) return left->search(d);
+            else return nullptr;
+        }
+        else
+        {
+            if (right) return right->search(d);
+            else return nullptr;
+
+        }
+    }
+
+    Bst<T>* predecessor(T d)
+    {
+        Bst<T>* curr = search(d);
+        if(curr->left != nullptr)
+        {
+            return search(curr->left->max());
+        }
+        else
+        {
+            Bst<T>* parent = curr->parent;
+            
+            while(parent != nullptr)
+            {
+                //without using key comparison -- only using left, right pointer
+                //if(node == parent.left){
+                //    node = parent;
+                //}
+                //else break;
+                if(parent->data < curr->data)
+                {
+                    return parent;
+                }
+                
+                parent = parent->parent;
+            }
+            
+            return 0;
+        }
+    }
+    
+    Bst<T>* successor(T d)
+    {
+        Bst<T>* curr = search(d);
+        if(curr->right != nullptr)
+        {
+            return search(curr->right->min());
+        }
+        else
+        {
+            Bst<T>* parent = curr->parent;
+            
+            while(parent != nullptr)
+            {
+                //without using key comparison -- only using left, right pointer
+                //if(node == parent.right){
+                //    node = parent;
+                //}
+                //else break;
+                if(parent->data > curr->data)
+                {
+                    return parent;
+                }
+                
+                parent = parent->parent;
+            }
+            return nullptr;
+        }
+    }
+
+    T get_val() const
+    {
+        return data;
+    }
+
+private:
+    T data;
+    Bst* parent;
+    Bst* left;
+    Bst* right;
 };
 
-template <typename T>
-T
 
 
 //template <typename T>
