@@ -7,7 +7,8 @@ void indent(int level) {
 
 template <typename T>
 class Bst {
-    friend void print_bst(const Bst<T>& bst, int level=0) {
+    friend void print_bst(const Bst<T>& bst, int level=0)
+    {
         indent(level);
         level++;
 
@@ -36,10 +37,37 @@ class Bst {
         Bst(T d, Bst* p=nullptr, Bst* l=nullptr, Bst* r=nullptr)
             : data(d), parent(p), left(l), right(r) {}
 
-        Bst<T>* insert(const T d) {
+        Bst<T>* insert(const T d)
+        {
+            if (d == data) return nullptr;
+            else if (d < data)
+            {
+                if (!left)
+                {
+                    left = new Bst(d, this, nullptr, nullptr);
+                    return left;
+                }
+                else
+                {
+                    left->insert(d);
+                }
+            }
+            else
+            {
+                if (!right)
+                {
+                    right = new Bst(d, this, nullptr, nullptr);
+                    return right;
+                }
+                else
+                {
+                    right->insert(d);
+                }
+            }
         }
 
-        T get_val() const {
+        T get_val() const
+        {
             return data;
         }
 
@@ -49,6 +77,9 @@ class Bst {
         Bst* left;
         Bst* right;
 };
+
+template <typename T>
+T
 
 
 //template <typename T>

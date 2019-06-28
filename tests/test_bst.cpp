@@ -17,7 +17,7 @@ int main() {
     assert(iroot->get_val() == 40);
     print_bst(*iroot);
 
-    /*
+    
     iroot->insert(20);
     iroot->insert(60);
     print_bst(*iroot);
@@ -50,7 +50,7 @@ int main() {
     succ45 = iroot->successor(45);
     assert(succ45->get_val() == 50);
     
-     */
+
     Bst<string>* sroot = new Bst<string>("Daniel");
     assert(sroot->get_val() == "Ellie");
     print_bst(*sroot);
