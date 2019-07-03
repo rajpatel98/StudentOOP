@@ -39,12 +39,40 @@ public:
     }
 };
 
+class Cos
+{
+public:
+    double operator()(double r)
+    {
+        return cos(r);
+    }
+};
+
+class Tan
+{
+public:
+    double operator()(double r)
+    {
+        return tan(r);
+    }
+};
+
 class Fib
 {
 public:
     Fib()
     {
-        
+        vals[0] = 0;
+        vals[1] = 1;
+        for (int i = 2; i <= MAX_FIB; i++)
+        {
+            vals[i] = vals[i-2] + vals[i-1];
+        }
+    }
+    
+    ~Fib()
+    {
+        delete[] vals;
     }
 
     long long int operator()(long long int n)
@@ -57,6 +85,7 @@ public:
     const int MAX_FIB = 100;
     const int NOT_CALCED = -1;
 private:
+    int* vals = new int[MAX_FIB];
 };
 
 
@@ -71,6 +100,10 @@ double square_func(double d, function<double(double)> f)
     return f(d) * f(d);
 }
 
+double cube_func(double d, function<double(double)> f)
+{
+    return f(d) * f(d) * f(d);
+}
 
 int main()
 {
@@ -98,8 +131,13 @@ int main()
     cout << "Square of sin 1 = " << d << endl;
 
     // you're call here!
+    d = square_func(1, [](double arg) { return cos(arg); });
     cout << "Square of cos 1 = " << d << endl;
     // you're call here!
+    d = square_func(1, [](double arg) { return tan(arg); });
     cout << "Square of tan 0 = " << d << endl;
     // you're call here!
+    
+    d = cube_func(1, [](double arg) { return sin(arg); });
+    cout << "Cube of sin 1 = " << d << endl;
 }
