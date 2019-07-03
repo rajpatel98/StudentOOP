@@ -62,18 +62,17 @@ class Fib
 public:
     Fib()
     {
-        vals[0] = 0;
-        vals[1] = 1;
-        for (int i = 2; i <= MAX_FIB; i++)
+//        vals[0] = 0;
+//        vals[1] = 1;
+        for (int i = 0; i <= MAX_FIB; i++)
         {
-            vals[i] = vals[i-2] + vals[i-1];
+            if (i <= 1 ) vals[i] = i;
+            else vals[i] = vals[i-2] + vals[i-1];
+            
+//            vals[i] = vals[i-2] + vals[i-1];
         }
     }
     
-    ~Fib()
-    {
-        delete[] vals;
-    }
 
     long long int operator()(long long int n)
     {
