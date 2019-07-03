@@ -11,7 +11,7 @@ int main()
 {
     cout << "Input a complex number:\n";
     Complex c1{2, 5};
-    // get a complex from stdin:
+//     get a complex from stdin:
 //    cin >> c1;
 //    if(!cin)
 //    {
